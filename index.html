@@ -269,7 +269,7 @@ h1,h2,h3,.heading{font-family:'Nunito',sans-serif}
 <body>
 
 <!-- SPLASH -->
-<div id="splash">
+<div id="splash" style="display:none">
   <div class="sp-logo">🏫</div>
   <div class="sp-title">Sistema de Boletines</div>
   <div class="sp-sub">Fundación Mis Habilidades · Ibagué</div>
@@ -277,7 +277,7 @@ h1,h2,h3,.heading{font-family:'Nunito',sans-serif}
 </div>
 
 <!-- LOGIN -->
-<div id="login">
+<div id="login" style="display:flex">
   <div class="lcard">
     <div class="lhead">
       <div class="llogo">🏫</div>
@@ -425,11 +425,8 @@ async function seedIfNeeded(){
 }
 
 // ── AUTH ──
-// Forzar que el splash desaparezca en máximo 4 segundos
-setTimeout(()=>{
-  hideSplash();
-  if(!window.CU) showLogin();
-}, 4000);
+// Sin splash - mostrar login inmediatamente
+hideSplash();
 
 if(auth){
   onAuthStateChanged(auth, async(user)=>{
