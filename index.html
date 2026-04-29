@@ -425,6 +425,12 @@ async function seedIfNeeded(){
 }
 
 // ── AUTH ──
+// Forzar que el splash desaparezca en máximo 4 segundos
+setTimeout(()=>{
+  hideSplash();
+  if(!window.CU) showLogin();
+}, 4000);
+
 if(auth){
   onAuthStateChanged(auth, async(user)=>{
     hideSplash();
@@ -457,7 +463,7 @@ if(auth){
     } else { showLogin(); }
   });
 } else {
-  setTimeout(hideSplash, 1500);
+  setTimeout(()=>{ hideSplash(); showLogin(); }, 1500);
 }
 
 window.doLogin = async function(){
